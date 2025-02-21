@@ -1,0 +1,23 @@
+writer_task:
+  description: >    
+    take inputs and write a nice html file with the inputs given.
+    
+    Patient profile:
+    {patient_profile}
+
+    Diagnosis:
+    {diagnosis}
+
+    Supplements recommendation:
+    {supplements_recommendation}
+
+    Exercise recommendation:
+    {exercise_recommendation}
+
+    Based on given patients profile, and recommendations of different categories provided by other AI longevity GP. 
+    Write a nice html file that format the given .md file nicely.
+  expected_output: >
+    A nice html file with the inputs given. 
+    Formatted as markdown without '```'. 
+
+  agent: writer_expert

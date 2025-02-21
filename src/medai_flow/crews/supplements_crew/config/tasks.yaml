@@ -1,0 +1,15 @@
+supplements_task:
+  description: >    
+    Each bullet point start with a supplement, and then followed with a reason why it is relevant to the patient.
+
+    Patient profile:
+    {patient_profile}
+
+    Diagnosis:
+    {diagnosis}
+
+    Based on given patients profile and diagnosis, provide expert advice on supplements for optimal health and longevity
+  expected_output: >
+    A list with maximum 5 bullet points of the most relevant information about supplements for optimal health and longevity. 
+    Formatted as markdown without '```'. 
+  agent: supplements_expert

@@ -1,0 +1,8 @@
+diagnosis_task:
+  description: >
+    Patient profile: {patient_profile}
+    
+    Based on given patients profile, provide expert advice on dignosis for optimal health and longevity. Only diagnosis and no recommendations.
+  expected_output: >
+    A list with maximum 5 bullet points of the most relevant information about dignosis for optimal health and longevity.
+  agent: diagnosis_expert
