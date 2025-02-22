@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,117 +5,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Patient Report</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f9;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            background: #ffffff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1, h2, h3 {
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            padding: 5px 0;
-        }
-        .section {
-            margin-bottom: 20px;
-        }
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        h2 { color: #555; }
+        h3 { color: #777; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 10px; }
+        .category { margin-top: 30px; }
     </style>
 </head>
 <body>
-
-<div class="container">
     <h1>Patient Report</h1>
-
-    <div class="section">
-        <h2>Patient Profile</h2>
+    
+    <h2>Patient Profile</h2>
+    <ul>
+        <li><strong>Nationality:</strong> Swiss</li>
+    </ul>
+    
+    <div class="category">
+        <h3>Demographics</h3>
         <ul>
-            <li><strong>Nationality:</strong> Swiss</li>
-            <li><strong>Demographics:</strong></li>
-            <ul>
-                <li>Sex: F</li>
-                <li>Age: 41</li>
-                <li>Weight: 88 kg</li>
-                <li>Height: 169 cm</li>
-                <li>Waist Circumference: 89 cm</li>
-                <li>Smoking Status: Smoker</li>
-            </ul>
+            <li><strong>Sex:</strong> F</li>
+            <li><strong>Age:</strong> 41</li>
+            <li><strong>Weight:</strong> 88 kg</li>
+            <li><strong>Height:</strong> 169 cm</li>
+            <li><strong>Waist-circumference:</strong> 89 cm</li>
+            <li><strong>Smoking Status:</strong> Smoker</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2>Blood Pressure</h2>
+    <div class="category">
+        <h3>Blood Pressure</h3>
         <ul>
-            <li>Systolic (SBP): 135 mmHg</li>
-            <li>Diastolic (DBP): 85 mmHg</li>
+            <li><strong>Systolic (SBP):</strong> 135 mmHg</li>
+            <li><strong>Diastolic (DBP):</strong> 85 mmHg</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2>Glucose Measurements</h2>
+    <div class="category">
+        <h3>Glucose Measurements</h3>
         <ul>
-            <li>Fasting Plasma Glucose (FPG): 5.5 mmol/l</li>
-            <li>Fasting Glucose: 5.4 mmol/l</li>
-            <li>HbA1c: 5.8%</li>
-            <li>Fasting Insulin: 11.25 μU/mL</li>
-            <li>HOMA-IR: 2.7</li>
+            <li><strong>Fasting Plasma Glucose (FPG):</strong> 5.5 mmol/l</li>
+            <li><strong>Fasting Glucose:</strong> 5.4 mmol/l</li>
+            <li><strong>HbA1c:</strong> 5.8%</li>
+            <li><strong>Fasting Insulin:</strong> 11.25 μU/mL</li>
+            <li><strong>HOMA-IR:</strong> 2.7</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2>Lipid Profile</h2>
+    <div class="category">
+        <h3>Lipid Profile</h3>
         <ul>
-            <li>Total Cholesterol: 5.4 mmol/l</li>
-            <li>HDL-Cholesterol: 1.2 mmol/l</li>
-            <li>LDL-Cholesterol: 3.4 mmol/l</li>
-            <li>Triglycerides: 1.7 mmol/l</li>
+            <li><strong>Total Cholesterol:</strong> 5.4 mmol/l</li>
+            <li><strong>HDL-Cholesterol:</strong> 1.2 mmol/l</li>
+            <li><strong>LDL-Cholesterol:</strong> 3.4 mmol/l</li>
+            <li><strong>Triglycerides:</strong> 1.7 mmol/l</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2>Diagnosis</h2>
-        <p>The patient has a BMI of approximately 30.81, which categorizes her as obese according to standard classifications. This indicates an increased risk for various health issues, including cardiovascular diseases.</p>
-        <p>The Body Roundness Index (BRI) is approximately 3.87, suggesting a higher level of central adiposity, which is closely linked to increased health risks like metabolic syndrome.</p>
-        <p>The patient's blood pressure is elevated (135/85 mmHg), placing her in the prehypertension range and indicating a risk for developing hypertension, especially considering her smoking status.</p>
-        <p>The glucose measurements indicate that the patient is in the pre-diabetic range (FPG: 5.5 mmol/l, HbA1c: 5.8%), suggesting increased risk for developing type 2 diabetes.</p>
-        <p>The lipid profile shows a borderline high level of LDL cholesterol (3.4 mmol/l), which could increase the risk of atherosclerosis and cardiovascular diseases, especially as an active smoker with obesity-related metabolic concerns.</p>
+    <div class="category">
+        <h3>Diagnosis</h3>
+        <ul>
+            <li>The patient has a BMI of 30.8, which classifies as obesity according to WHO standards. This is a risk factor for cardiovascular diseases and metabolic disorders.</li>
+            <li>The Body Roundness Index (BRI) is 3.87, which indicates increased visceral fat. This further correlates with higher risks of metabolic syndrome and cardiovascular conditions.</li>
+            <li>The patient's blood pressure is in the prehypertension range (SBP: 135 mmHg, DBP: 85 mmHg), suggesting a risk of developing hypertension if lifestyle changes aren't made.</li>
+            <li>The patient shows signs of insulin resistance (HOMA-IR: 2.7) and has borderline fasting glucose levels. The HbA1c at 5.8% suggests prediabetes, indicating an increased risk for developing Type 2 diabetes.</li>
+            <li>The patient's lipid profile shows moderate dyslipidemia, with total cholesterol and LDL-cholesterol levels slightly elevated, which increases the risk of atherosclerosis.</li>
+        </ul>
+        <p>This diagnosis highlights areas that need attention to ensure optimal health and longevity.</p>
     </div>
 
-    <div class="section">
-        <h2>Supplements Recommendation</h2>
+    <div class="category">
+        <h3>Supplements Recommendation</h3>
         <ul>
-            <li><strong>Omega-3 Fatty Acids:</strong> Beneficial for cardiovascular health; reduces inflammation, lowers high blood pressure, and improves lipid profiles.</li>
-            <li><strong>Coenzyme Q10 (CoQ10):</strong> An antioxidant supporting heart health and may help in managing blood pressure, especially important due to smoking.</li>
-            <li><strong>Vitamin D:</strong> Important for bone health, insulin sensitivity, and reducing the risk of type 2 diabetes.</li>
-            <li><strong>Magnesium:</strong> Supports blood pressure regulation, glucose metabolism, and overall heart health.</li>
-            <li><strong>Berberine:</strong> Improves insulin sensitivity and lowers blood glucose levels, beneficial for pre-diabetic status.</li>
+            <li><strong>Omega-3 Fatty Acids:</strong> Known to support cardiovascular health by lowering triglyceride levels and potentially reducing blood pressure, which is beneficial given the patient's prehypertension and dyslipidemia.</li>
+            <li><strong>Magnesium:</strong> Can help manage blood pressure and improve insulin sensitivity, thus assisting in controlling prediabetes and reducing the risk of type 2 diabetes.</li>
+            <li><strong>Vitamin D:</strong> Essential for cardiovascular health and maintaining insulin sensitivity. Given the Swiss demographics with less sunlight exposure, supplementation can support immune function.</li>
+            <li><strong>Coenzyme Q10 (CoQ10):</strong> Supports heart health and is beneficial in managing prehypertension and reducing LDL-cholesterol levels.</li>
+            <li><strong>Berberine:</strong> Shown to improve insulin sensitivity and lipid profiles.</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2>Exercise Recommendation</h2>
+    <div class="category">
+        <h3>Exercise Recommendation</h3>
         <ul>
-            <li><strong>Walking or Light Jogging:</strong> Increases cardiovascular endurance, helps in weight management, and reduces blood pressure.</li>
-            <li><strong>Strength Training:</strong> Enhances muscle mass, boosts metabolism, and improves insulin sensitivity.</li>
-            <li><strong>High-Intensity Interval Training (HIIT):</strong> Efficient for burning calories and reducing body fat.</li>
-            <li><strong>Yoga or Pilates:</strong> Improves flexibility, stress management, and reduces central adiposity.</li>
-            <li><strong>Swimming or Cycling:</strong> Low-impact cardiovascular exercise that aids in reducing blood pressure and improving lipid profiles.</li>
+            <li><strong>Aerobic Exercise:</strong> Effective in reducing blood pressure and improving cardiovascular health.</li>
+            <li><strong>Resistance Training:</strong> Improves insulin sensitivity, vital for a person with prediabetes and signs of insulin resistance.</li>
+            <li><strong>Interval Training (HIIT):</strong> Effective in rapidly improving cardiovascular health and aiding weight loss.</li>
+            <li><strong>Flexibility and Stretching Exercises:</strong> Important for managing stress and improving general well-being.</li>
+            <li><strong>Smoking Cessation-Integrated Physical Activity:</strong> Regular physical activity can help manage withdrawal symptoms associated with quitting smoking.</li>
         </ul>
     </div>
-</div>
+
+    <div class="category">
+        <h3>References</h3>
+        <ul>
+            <li>Gordon, B.A., et al., "Resistance Exercise Training Improves Glycaemic Control in Adults with Type 2 Diabetes. "Diabetes Care" 2009;32(1):103-112.</li>
+            <li>Consitt, L.A., et al., "Improvement in Action Potential Duration Homogeneity Parallels Cardiac Functional Improvement in STZ-Induced Diabetic Rats Treated with HIIT." "Journal of Applied Physiology" 2013;115:134-142.</li>
+            <li>American Heart Association, "Exercise (Physical Activity) and Stroke." 2018.</li>
+        </ul>
+    </div>
 
 </body>
 </html>
-```

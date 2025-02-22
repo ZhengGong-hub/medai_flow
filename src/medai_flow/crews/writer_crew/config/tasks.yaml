@@ -16,6 +16,8 @@ writer_task:
 
     Based on given patients profile, and recommendations of different categories provided by other AI longevity GP. 
     Write a nice html file that format the given .md file nicely.
+
+    If there are references mentioned, please add a nice reference list at the end of the html file, and maintain nicely the intext citations. Follow AMA style.
   expected_output: >
     A nice html file with the inputs given. 
     Formatted as markdown without '```'. 

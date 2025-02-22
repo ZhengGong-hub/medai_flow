@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-
+from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -16,6 +16,14 @@ class ExerciseCrew:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
+    # Create a PDF knowledge source
+    pdf_source = PDFKnowledgeSource(
+        file_paths=[
+            "Aging Hallmarks: The Benefits of Physical Exercise.pdf", 
+            "Resistance Exercise Training as a Primary Countermeasure to Age-Related Chronic Disease.pdf"
+            ]
+    )
+
     # If you would lik to add tools to your crew, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
     @agent
@@ -23,6 +31,7 @@ class ExerciseCrew:
         return Agent(
             config=self.agents_config["exercise_expert"],
             verbose=True,
+            knowledge_sources=[self.pdf_source]
         )
 
     @task
