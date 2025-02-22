@@ -77,7 +77,9 @@ def kickoff():
 
 def plot():
     recommendation_flow = RecommendationFlow()
-    recommendation_flow.plot()
+    recommendation_flow.plot(
+        "output_data/recommendation_flow"
+    )
 
 
 if __name__ == "__main__":
