@@ -1,10 +1,10 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-
+from src.medai_flow.tools.bmi_calculator import BMICalculator
+from src.medai_flow.tools.bri_calculator import BRICalculator
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
-
 
 @CrewBase
 class DiagnoseCrew:
@@ -16,13 +16,18 @@ class DiagnoseCrew:
     agents_config = "config/agents.yaml"
     tasks_config = "config/tasks.yaml"
 
+    # instance of the tools
+    bmi_calculator = BMICalculator()
+    bri_calculator = BRICalculator()
     # If you would lik to add tools to your crew, you can learn more about it here:
     # https://docs.crewai.com/concepts/agents#agent-tools
+    
     @agent
     def diagnosis_expert(self) -> Agent:
         return Agent(
             config=self.agents_config["diagnosis_expert"],
             verbose=True,
+            tools=[self.bmi_calculator, self.bri_calculator],
         )
 
     @task
