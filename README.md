@@ -33,6 +33,71 @@ Next, navigate to your project directory and install the dependencies:
 crewai install
 ```
 
+
+## Flow Architecture
+
+The system follows a sequential flow with concurrent processing capabilities. Here's the detailed flow diagram:
+
+```mermaid
+graph TD
+    A[Start] --> B[Input Patient Profile]
+    B --> C[Diagnose Patient]
+    C --> D[Generate Recommendations]
+    
+    subgraph "Concurrent Processing"
+        D --> |Async| E[Supplements Crew]
+        D --> |Async| F[Exercise Crew]
+        E --> G[Supplements Result]
+        F --> H[Exercise Result]
+    end
+    
+    G --> I[Output Recommendation]
+    H --> I
+    I --> J[Writer Crew]
+    J --> K[Final Report]
+
+    subgraph "State Management"
+        L[(RecommendationState)]
+        L --> |patient_profile| B
+        L --> |diagnosis| C
+        L --> |supplements_recommendation| G
+        L --> |exercise_recommendation| H
+    end
+
+    style D fill:#f96,stroke:#333
+    style E fill:#bbf,stroke:#333
+    style F fill:#bbf,stroke:#333
+    style L fill:#fcf,stroke:#333
+```
+
+### Flow Components:
+
+1. **Input Patient Profile**
+   - Reads patient data from markdown file
+   - Initializes the state
+
+2. **Diagnose Patient**
+   - Uses DiagnoseCrew with BMI and BRI calculators
+   - Generates medical diagnosis
+
+3. **Generate Recommendations**
+   - Concurrent execution of Supplements and Exercise crews
+   - Uses asyncio.gather for parallel processing
+
+4. **Output Processing**
+   - Writer Crew combines all insights
+   - Generates final comprehensive report
+
+### State Management
+
+The `RecommendationState` class maintains:
+- Patient profile
+- Medical diagnosis
+- Supplement recommendations
+- Exercise recommendations
+- Final recommendation
+
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
