@@ -1,5 +1,15 @@
 # MedAI Flow Ideas
 
+## Flow Chart using mermaid
+
+```mermaid
+
+graph LR
+   A --> B
+   A -->C
+   C -->D
+```
+
 ## Quick Ideas
 - [ ] would be vital to have a graphical represenation of all the logs and the conversations of the agents doing tasks that lead to the final output
 - [ ] Idea 2
