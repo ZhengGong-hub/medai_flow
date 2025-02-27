@@ -2,6 +2,7 @@
 
 ## Flow Chart using mermaid
 
+Just a template flow chart
 ```mermaid
 
 graph LR
