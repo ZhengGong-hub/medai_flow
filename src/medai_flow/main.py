@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 from pydantic import BaseModel
 import asyncio
-
+import os
 from crewai.flow import Flow, listen, start
 
 from medai_flow.crews.supplements_crew.supplements_crew import SupplementsCrew
 from medai_flow.crews.exercise_crew.exercise_crew import ExerciseCrew
 from medai_flow.crews.writer_crew.writer_crew import WriterCrew
 from medai_flow.crews.diagnose_crew.diagnose_crew import DiagnoseCrew
+from medai_flow.crews.input_parser_crew.input_parser_crew import InputParserCrew
+
 
 class RecommendationState(BaseModel):
     patient_profile: str = ""
@@ -17,15 +19,34 @@ class RecommendationState(BaseModel):
     diagnosis: str = ""
 
 class RecommendationFlow(Flow[RecommendationState]):
+    
 
     @start()
     def input_patient_profile(self):
-        print("Generating sentence count")
+        file_path = "input_data/gold_standard/patient_b_profile.md"
 
-        # get patient profile from directory
-        with open("input_data/patient_b_profile.md", "r") as f:
-            self.state.patient_profile = f.read()
-    
+        if os.path.exists(file_path):
+            # check whether it is pdf or md 
+            if file_path.endswith(".pdf"):
+                print("Parsing PDF file")
+                input_parser_crew = InputParserCrew().crew()
+                input_parser_result = input_parser_crew.kickoff(
+                    inputs={"pdf_file_address": file_path}
+                )       
+                if "Failed to extract" in input_parser_result.raw:
+                    raise Exception("Failed to extract text from file!")
+                else:
+                    self.state.patient_profile = input_parser_result.raw
+            elif file_path.endswith(".md"):
+                with open(file_path, "r") as f:
+                    self.state.patient_profile = f.read()
+            else:
+                raise Exception("File is not a PDF or MD file!")
+        else:
+            raise Exception("File does not exist!")
+            
+
+
     @listen(input_patient_profile)
     def diagnose_patient(self):
         print("Diagnosing patient")

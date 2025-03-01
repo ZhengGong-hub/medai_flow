@@ -1,0 +1,10 @@
+PDFparser_task:
+  description: >
+    PDF file address: {pdf_file_address}
+    
+    Use given tools to extract text from a PDF file. First use pymupdf_extractor to extract text from the PDF file. 
+
+    If you think the result is not clean enough, return only "Failed to extract"
+  expected_output: >
+    save the result in .md format
+  agent: PDFparser_expert
