@@ -6,6 +6,9 @@ from crewai.flow import Flow, listen, start
 import tempfile
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 src_path = str(Path(__file__).parent.parent.parent / "src")
 if src_path not in sys.path:

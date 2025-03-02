@@ -1,3 +1,7 @@
+## [0.1.3] - 2025-03-02
+### Fixed 
+- environment par loading problem in tmux for ui
+
 ## [0.1.2] - 2025-03-02
 ### Added
 Example patient profile in ui.
