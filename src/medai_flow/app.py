@@ -123,11 +123,27 @@ def main():
     col1, col2 = st.columns(2)
 
     with col1:
-        # File upload option
-        uploaded_file = st.file_uploader("Upload patient profile (PDF or MD)", type=['pdf', 'md'])
+        # Add example data option
+        use_example = st.checkbox("Use example patient profile", value=False)
         
-        # Text input option
-        text_input = st.text_area("Or paste patient profile text here", height=300)
+        # File upload option
+        uploaded_file = st.file_uploader("Upload patient profile (PDF or MD)", type=['pdf', 'md'], disabled=use_example)
+        
+        # Text input option with example data
+        default_text = ""
+        if use_example:
+            try:
+                with open("/home/azureuser/medai_flow/input_data/gold_standard/patient_b_profile.md", "r") as f:
+                    default_text = f.read()
+            except Exception as e:
+                st.error(f"Failed to load example profile: {str(e)}")
+                
+        text_input = st.text_area(
+            "Or paste patient profile text here", 
+            value=default_text,
+            height=300,
+            disabled=use_example
+        )
 
     with col2:
         # Status container
