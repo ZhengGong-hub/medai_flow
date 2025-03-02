@@ -11,6 +11,7 @@ src_path = str(Path(__file__).parent.parent.parent / "src")
 if src_path not in sys.path:
     sys.path.append(src_path)
 
+from medai_flow import __version__
 from medai_flow.crews.supplements_crew.supplements_crew import SupplementsCrew
 from medai_flow.crews.exercise_crew.exercise_crew import ExerciseCrew
 from medai_flow.crews.writer_crew.writer_crew import WriterCrew
@@ -109,7 +110,13 @@ def main():
         layout="wide"
     )
 
-    st.title("🏥 NOVA Agentic Framework")
+    # Create a header container with title and version
+    header_col1, header_col2 = st.columns([4, 1])
+    with header_col1:
+        st.title("🏥 NOVA Agentic Framework")
+    with header_col2:
+        st.markdown(f"<p style='text-align: right; color: #666666; padding-top: 20px;'>v{__version__}</p>", unsafe_allow_html=True)
+
     st.write("Upload a patient profile or paste the text directly to get personalized health recommendations.")
 
     # Create two columns
