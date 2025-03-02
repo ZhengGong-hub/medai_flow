@@ -137,3 +137,22 @@ For support, questions, or feedback regarding the {{crew_name}} Crew or crewAI.
 - [Chat with our docs](https://chatg.pt/DWjSBZn)
 
 Let's create wonders together with the power and simplicity of crewAI.
+
+
+## Streamlit
+To run the app, you'll need to install Streamlit:
+```bash
+pip install streamlit
+```
+
+Then run the app with:
+
+```bash
+streamlit run src/medai_flow/app.py
+```
+
+The app will:
+Accept patient profiles through file upload or text input
+Show real-time status updates of each agent's work
+Display the final recommendation with markdown formatting
+Offer a download option for the recommendation

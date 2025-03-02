@@ -85,7 +85,8 @@ class RecommendationFlow(Flow[RecommendationState]):
                 "supplements_recommendation": self.state.supplements_recommendation, 
                 "exercise_recommendation": self.state.exercise_recommendation,
                 "patient_profile": self.state.patient_profile,
-                "diagnosis": self.state.diagnosis
+                "diagnosis": self.state.diagnosis,
+                "output_file_format": ".md",
             }
         )
 
