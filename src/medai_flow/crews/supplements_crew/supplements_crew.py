@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-
+from src.medai_flow.validation.input_validation import validate_patient_profile, validate_diagnosis
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -44,3 +44,15 @@ class SupplementsCrew:
             process=Process.sequential,
             verbose=True,
         )
+
+    def kickoff(self, inputs: dict):
+        """Kickoff the crew"""
+        validate_patient_profile(inputs)
+        validate_diagnosis(inputs)
+        return self.crew().kickoff(inputs=inputs)
+    
+    def kickoff_async(self, inputs: dict):
+        """Kickoff the crew"""
+        validate_patient_profile(inputs)
+        validate_diagnosis(inputs)
+        return self.crew().kickoff_async(inputs=inputs)

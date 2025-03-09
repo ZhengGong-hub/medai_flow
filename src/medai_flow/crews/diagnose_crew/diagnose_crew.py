@@ -2,6 +2,7 @@ from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
 from src.medai_flow.tools.bmi_calculator import BMICalculator
 from src.medai_flow.tools.bri_calculator import BRICalculator
+from src.medai_flow.validation.input_validation import validate_patient_profile
 # If you want to run a snippet of code before or after the crew starts,
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
@@ -36,7 +37,6 @@ class DiagnoseCrew:
             config=self.tasks_config["diagnosis_task"],
         )
 
-
     @crew
     def crew(self) -> Crew:
         """Creates the Research Crew"""
@@ -49,3 +49,8 @@ class DiagnoseCrew:
             process=Process.sequential,
             verbose=True,
         )
+
+    def kickoff(self, inputs: dict, **kwargs):
+        """Override kickoff to add input validation"""
+        validate_patient_profile(inputs)
+        return self.crew().kickoff(inputs=inputs, **kwargs)

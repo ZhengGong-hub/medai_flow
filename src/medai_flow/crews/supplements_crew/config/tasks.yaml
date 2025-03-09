@@ -8,7 +8,9 @@ supplements_task:
     Diagnosis:
     {diagnosis}
 
-    Based on given patients profile and diagnosis, provide expert advice on supplements for optimal health and longevity
+    Based on given patients profile and diagnosis, provide expert advice on supplements for optimal health and longevity.
+    Please mention the type of supplement, dosage, and frequency.
+    Start answer with "Here are some supplements recommendations for you:"
   expected_output: >
     A list with maximum 5 bullet points of the most relevant information about supplements for optimal health and longevity. 
     Formatted as markdown without '```'. 

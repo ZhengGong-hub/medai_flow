@@ -3,7 +3,7 @@ from pydantic import BaseModel
 import asyncio
 import os
 from crewai.flow import Flow, listen, start
-
+import sys
 from medai_flow.crews.supplements_crew.supplements_crew import SupplementsCrew
 from medai_flow.crews.exercise_crew.exercise_crew import ExerciseCrew
 from medai_flow.crews.writer_crew.writer_crew import WriterCrew
@@ -51,7 +51,7 @@ class RecommendationFlow(Flow[RecommendationState]):
     def diagnose_patient(self):
         print("Diagnosing patient")
         # get patient profile from directory
-        diagnose_crew = DiagnoseCrew().crew()
+        diagnose_crew = DiagnoseCrew()
         diagnose_result = diagnose_crew.kickoff(
             inputs={
                 "patient_profile": self.state.patient_profile
@@ -61,9 +61,9 @@ class RecommendationFlow(Flow[RecommendationState]):
 
     @listen(diagnose_patient)
     async def generate_recommendation(self):
-        print("Generating supplements recommendation")
-        supplements_crew = SupplementsCrew().crew()
-        exercise_crew = ExerciseCrew().crew()   
+        print("Generating recommendation")
+        supplements_crew = SupplementsCrew()
+        exercise_crew = ExerciseCrew()
 
         # Launch both crews concurrently using asyncio.gather:
         supplements_result, exercise_result = await asyncio.gather(
@@ -103,6 +103,20 @@ def plot():
         "output_data/recommendation_flow"
     )
 
+def test():
+
+    with open("input_data/gold_standard/patient_b_profile.md", "r") as f:
+        patient_profile = f.read()
+    inputs = {
+        "patient_profile": patient_profile,
+    }
+    try:
+        diagnose_crew = DiagnoseCrew().crew()
+        n_iterations = int(sys.argv[1]) if len(sys.argv) > 1 else 2 # set default to 2
+        model_name = sys.argv[2] if len(sys.argv) > 2 else "gpt-4o" # set default to gpt-4o
+        diagnose_crew.test(n_iterations=n_iterations, openai_model_name=model_name, inputs=inputs)
+    except Exception as e:
+        raise Exception(f"An error occurred while testing the diagnose crew: {e}")
 
 if __name__ == "__main__":
     kickoff()

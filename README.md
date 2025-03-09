@@ -1,5 +1,7 @@
 # MedAI Flow
 
+[![Tests](https://github.com/ZhengGong-hub/medai_flow/actions/workflows/test.yml/badge.svg)](https://github.com/ZhengGong-hub/medai_flow/actions/workflows/test.yml)
+
 A medical AI assistant that generates personalized health recommendations using CrewAI.
 
 ## Overview
@@ -33,6 +35,55 @@ Next, navigate to your project directory and install the dependencies:
 crewai install
 ```
 
+## Testing
+
+To run the tests, first install pytest:
+
+```bash
+pip install pytest
+```
+
+Then you can run all tests:
+```bash
+pytest tests/
+```
+
+For more detailed output, use:
+```bash
+pytest -v tests/  # Verbose mode
+pytest -l tests/  # Show local variables
+pytest -vv tests/ # Very verbose mode
+```
+
+Or run tests for a specific crew:
+```bash
+pytest tests/test_diagnose_crew.py
+pytest tests/test_supplements_crew.py
+pytest tests/test_exercise_crew.py
+pytest tests/test_writer_crew.py
+pytest tests/test_input_parser_crew.py
+```
+
+To run a specific test function, use:
+```bash
+# Run a specific test function with verbose output
+pytest -v tests/test_diagnose_crew.py::test_diagnose_crew_with_sample_profile
+
+# Run a specific test function with local variables
+pytest -l tests/test_supplements_crew.py::test_supplements_crew_with_sample_data
+
+# Run a specific test function with both verbose and local variables
+pytest -v -l tests/test_exercise_crew.py::test_exercise_crew_with_empty_inputs
+
+# Run a specific test function with very verbose output
+pytest -vv tests/test_writer_crew.py::test_writer_crew_output_file
+```
+
+This will show:
+- Which test is running
+- The exact line where the error occurred
+- Local variables at the time of the error
+- Full traceback of the error
 
 ## Flow Architecture
 
@@ -156,3 +207,4 @@ Accept patient profiles through file upload or text input
 Show real-time status updates of each agent's work
 Display the final recommendation with markdown formatting
 Offer a download option for the recommendation
+

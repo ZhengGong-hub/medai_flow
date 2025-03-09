@@ -24,6 +24,9 @@ graph LR
 - [ ] Enhancement 3
 - [ ] Enhancement 4
 
+### Priority High
+Supervised Fine-tuning Trainer: https://huggingface.co/docs/trl/en/sft_trainer
+
 ## Notes & Brainstorming
 ### YYYY-MM-DD
 - Quick thought about X
