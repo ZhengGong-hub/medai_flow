@@ -27,10 +27,9 @@ jobs:
         source .venv/bin/activate
         pip install --upgrade pip
         pip install uv  # Install the uv package
-        uv pip install      # Install dependencies from uv.lock
         
     - name: Run tests
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        pytest tests/ -v
+        uv run pytest tests/
