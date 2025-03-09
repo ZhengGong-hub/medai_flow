@@ -27,7 +27,7 @@ jobs:
         source .venv/bin/activate
         pip install --upgrade pip
         pip install uv  # Install the uv package
-        uv install      # Install dependencies from uv.lock
+        uv pip install      # Install dependencies from uv.lock
         
     - name: Run tests
       env:
